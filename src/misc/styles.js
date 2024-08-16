@@ -49,7 +49,7 @@ export const theme = {
 
 export const typography = {
   fontFamily: "avenir",
-  styles: {
+  fontStyles: {
     largeTitle: {
       weight: "bold",
       fontSize: 34,
@@ -80,6 +80,10 @@ export const typography = {
     },
     subheading: {
       weight: "regular",
+      size: 15,
+    },
+    subheadingLight: {
+      weight: "300",
       size: 15,
     },
     footnote: {
