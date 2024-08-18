@@ -1,9 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, useColorScheme } from "react-native";
+import { StyleSheet, View, useColorScheme } from "react-native";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Button from "./Button";
 import { theme } from "../misc/styles";
-import { LinearGradient } from "expo-linear-gradient";
 
 const SocialButton = ({ icon, onPress, colorScheme }) => {
   const styles = useStyle();

@@ -7,7 +7,6 @@ import {
   useColorScheme,
   useWindowDimensions,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 import { theme } from "../misc/styles";
 // Custom Components
 import Button from "../components/Button";

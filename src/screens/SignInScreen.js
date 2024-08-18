@@ -4,14 +4,11 @@ import { BlurView } from "expo-blur";
 import { stylings, typography, theme } from "../misc/styles";
 import FormTextInput from "../components/FormTextInput";
 import Button from "../components/Button";
-import { LinearGradient } from "expo-linear-gradient";
 import CloseButton from "../components/CloseButton";
 import SocialButton from "../components/SocialButton";
 import GradientButton from "../components/GradientButton";
 
 const SignInScreen = ({ isVisible, onClose }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",
