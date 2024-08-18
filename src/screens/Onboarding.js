@@ -16,9 +16,12 @@ import OnboardingItems from "../components/OnboardingItems";
 import { getIndexFromFlatlist } from "../utils/helpers";
 // Features data
 import features from "../data/features";
+import SignInScreen from "./SignInScreen";
+import GradientButton from "../components/GradientButton";
 
 export default function Onboarding() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [signInModalVisible, setSignInModalVisible] = useState(false);
   const { width } = useWindowDimensions();
   const colorScheme = useColorScheme();
   const styles = useStyle();
@@ -66,22 +69,22 @@ export default function Onboarding() {
         </View>
       </View>
       <View style={styles.card}>
-        <Button>
-          <LinearGradient
-            style={styles.button}
-            colors={
-              colorScheme === "light"
-                ? theme.light.button.activeHighlightBg
-                : theme.dark.button.activeHighlightBg
-            }
-          >
-            <Text style={styles.buttonLabel}>CREATE ACCOUNT</Text>
-          </LinearGradient>
-        </Button>
-        <Button style={styles.buttonSimple}>
+        <GradientButton
+          colorScheme={colorScheme}
+          label="CREATE ACCOUNT"
+          style={{ marginHorizontal: 30 }}
+        />
+        <Button
+          style={styles.buttonSimple}
+          onPress={() => setSignInModalVisible(true)}
+        >
           <Text style={styles.buttonLabel}>SIGN IN</Text>
         </Button>
       </View>
+      <SignInScreen
+        isVisible={signInModalVisible}
+        onClose={() => setSignInModalVisible(false)}
+      />
     </View>
   );
 }

@@ -12,14 +12,20 @@ export const theme = {
       activeBg: "#000000",
       activeIcon: "#ffffff",
       activeLabel: "#ffffff",
-      activeHighlightBg: ["#7253E8", "#914BAA"],
+      activeHighlightBg: ["#000000", "#000000"],
       inactiveBg: "#D3D3D3",
       inactiveLabel: "#A4A4A4",
+      disabledBg: ["#EDEDED"],
+      disabledLabel: "#D3D3D3",
     },
     // text
     text: {
       primary: "#000000",
+      onButtonPrimary: "#ffffff",
       secondary: "#6B6B6B",
+    },
+    textInput: {
+      primary: "#EDEDED",
     },
   },
   dark: {
@@ -38,13 +44,23 @@ export const theme = {
       activeHighlightBg: ["#7253E8", "#914BAA"],
       inactiveBg: "#867FA1",
       inactiveLabel: "#ffffff",
+      disabledBg: ["#EDEDED"],
+      disabledLabel: "#D3D3D3",
     },
     // text
     text: {
       primary: "#ffffff",
+      onButtonPrimary: "#ffffff",
       secondary: "#867FA1",
     },
+    textInput: {
+      primary: "#867FA1",
+    },
   },
+};
+
+export const stylings = {
+  borderRadius: 40,
 };
 
 export const typography = {
