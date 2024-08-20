@@ -1,72 +1,21 @@
 import React, { useState } from "react";
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  useColorScheme,
-  useWindowDimensions,
-} from "react-native";
+import { StyleSheet, Text, View, useColorScheme } from "react-native";
 import { theme } from "../misc/styles";
 // Custom Components
 import Button from "../components/Button";
-import OnboardingItems from "../components/OnboardingItems";
-// Helper
-import { getIndexFromFlatlist } from "../utils/helpers";
-// Features data
-import features from "../data/features";
 import SignInScreen from "./SignInScreen";
 import GradientButton from "../components/GradientButton";
+import Carousel from "../components/Carousel";
 
 export default function Onboarding() {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [signInModalVisible, setSignInModalVisible] = useState(false);
-  const { width } = useWindowDimensions();
   const colorScheme = useColorScheme();
   const styles = useStyle();
-  const ITEM_WIDTH = width;
-
-  // Function to get the current carousel index
-  const handleScroll = (event) => {
-    const newIndex = getIndexFromFlatlist(event);
-    if (newIndex !== currentIndex) {
-      setCurrentIndex(newIndex);
-    }
-  };
 
   return (
     <View style={styles.container}>
-      <View style={styles.carouselContainer}>
-        <FlatList
-          data={features}
-          keyExtractor={(item) => item.id}
-          bounces={false}
-          pagingEnabled
-          horizontal
-          snapToInterval={ITEM_WIDTH}
-          decelerationRate="fast"
-          showsHorizontalScrollIndicator={false}
-          renderItem={({ item, index }) => <OnboardingItems item={item} />}
-          onScroll={handleScroll}
-        />
-        <View style={styles.pagination}>
-          {features.map((_, index) => (
-            <View
-              key={index}
-              style={[
-                styles.dot,
-                currentIndex === index && {
-                  backgroundColor:
-                    colorScheme === "light"
-                      ? theme.light.text.primary
-                      : theme.dark.text.primary,
-                  opacity: 1,
-                },
-              ]}
-            />
-          ))}
-        </View>
-      </View>
+      <Carousel />
+
       <View style={styles.card}>
         <GradientButton
           colorScheme={colorScheme}
@@ -90,7 +39,6 @@ export default function Onboarding() {
 
 const useStyle = () => {
   const colorScheme = useColorScheme();
-  const DOT_SIZE = 4;
   const styles = StyleSheet.create({
     button: {
       alignItems: "center",
@@ -120,9 +68,6 @@ const useStyle = () => {
         colorScheme === "light" ? "#EDEDED" : theme.dark.background.cardBg,
       borderRadius: 30,
     },
-    carouselContainer: {
-      flex: 1,
-    },
     container: {
       flex: 1,
       backgroundColor:
@@ -130,23 +75,6 @@ const useStyle = () => {
           ? theme.light.background.primary
           : theme.dark.background.primary,
       justifyContent: "center",
-    },
-    dot: {
-      borderRadius: 100,
-      height: DOT_SIZE,
-      width: DOT_SIZE,
-      padding: DOT_SIZE,
-      margin: 5,
-      opacity: 0.3,
-      backgroundColor:
-        colorScheme === "light"
-          ? theme.light.text.secondary
-          : theme.dark.text.secondary,
-    },
-    pagination: {
-      flexDirection: "row",
-      justifyContent: "center",
-      flex: 0.2,
     },
   });
 
