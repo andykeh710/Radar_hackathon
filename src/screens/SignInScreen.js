@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Modal, StyleSheet, Text, View, useColorScheme } from "react-native";
 import { BlurView } from "expo-blur";
-import { stylings, typography, theme } from "../misc/styles";
+import { stylings, typography } from "../misc/styles";
 import FormTextInput from "../components/FormTextInput";
 import Button from "../components/Button";
 import CloseButton from "../components/CloseButton";
 import SocialButton from "../components/SocialButton";
 import GradientButton from "../components/GradientButton";
+import { useColors } from "../hooks/useColors";
 
 const SignInScreen = ({ isVisible, onClose }) => {
   const [loginData, setLoginData] = useState({
@@ -15,7 +16,7 @@ const SignInScreen = ({ isVisible, onClose }) => {
   });
   const styles = useStyle();
   const colorScheme = useColorScheme();
-  const tint = colorScheme === "light" ? "light" : "dark";
+  const tint = colorScheme === "light" ? "systemThinMaterialLight" : "dark";
 
   const handleUsernameChange = (username) => {
     setLoginData({
@@ -143,37 +144,28 @@ const SignInScreen = ({ isVisible, onClose }) => {
 };
 
 const useStyle = () => {
-  const colorScheme = useColorScheme();
+  const colorScheme = useColors();
   const styles = StyleSheet.create({
     button: {
       alignItems: "center",
-      backgroundColor:
-        colorScheme === "light"
-          ? theme.light.button.activeHighlightBg[0]
-          : theme.dark.button.activeHighlightBg[0],
+      backgroundColor: colorScheme.button.activeHighlightBg[0],
       borderRadius: 50,
       padding: 20,
       marginTop: 30,
     },
     buttonLabel: {
-      color: colorScheme === "light" ? "#000000" : "#ffffff",
+      color: colorScheme.button.activeLabelInversed,
       letterSpacing: 2,
     },
 
     caption: {
-      color:
-        colorScheme === "light"
-          ? theme.light.text.secondary
-          : theme.dark.text.secondary,
+      color: colorScheme.text.secondary,
       marginHorizontal: 5,
       marginLeft: 1,
       letterSpacing: 0.5,
     },
     descriptionText: {
-      color:
-        colorScheme === "light"
-          ? theme.light.text.primary
-          : theme.dark.text.primary,
+      color: colorScheme.text.primary,
       letterSpacing: 0.5,
     },
     headerContainer: {
@@ -216,20 +208,14 @@ const useStyle = () => {
     title: {
       fontSize: typography.fontStyles.title1.fontSize,
       fontWeight: "bold",
-      color:
-        colorScheme === "light"
-          ? theme.light.text.primary
-          : theme.dark.text.primary,
+      color: colorScheme.text.primary,
       marginVertical: 10,
       letterSpacing: 1,
     },
     subtitle: {
       fontSize: typography.fontStyles.title3.fontSize,
       fontWeight: "300",
-      color:
-        colorScheme === "light"
-          ? theme.light.text.primary
-          : theme.dark.text.primary,
+      color: colorScheme.text.primary,
       letterSpacing: 1,
     },
   });

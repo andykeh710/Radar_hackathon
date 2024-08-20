@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import CustomTextInput from "./CustomTextInput";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { theme } from "../misc/styles";
+import { useColors } from "../hooks/useColors";
 
 const FormTextInput = ({
   value,
@@ -12,8 +12,8 @@ const FormTextInput = ({
   clearButtonMode,
   secureTextEntry = false,
   icon,
-  colorScheme,
 }) => {
+  const colorScheme = useColors();
   return (
     <CustomTextInput
       value={value}
@@ -23,15 +23,7 @@ const FormTextInput = ({
       clearButtonMode={clearButtonMode}
       secureTextEntry={secureTextEntry}
     >
-      <AntDesign
-        name={icon}
-        size={24}
-        color={
-          colorScheme === "light"
-            ? theme.light.text.primary
-            : theme.dark.text.primary
-        }
-      />
+      <AntDesign name={icon} size={24} color={colorScheme.text.primary} />
     </CustomTextInput>
   );
 };

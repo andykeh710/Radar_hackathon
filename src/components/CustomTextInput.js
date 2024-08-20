@@ -1,6 +1,6 @@
-import { StyleSheet, View, useColorScheme, TextInput } from "react-native";
+import { StyleSheet, View, TextInput } from "react-native";
 import React from "react";
-import { theme } from "../misc/styles";
+import { useColors } from "../hooks/useColors";
 
 const CustomTextInput = ({
   placeholder,
@@ -10,7 +10,8 @@ const CustomTextInput = ({
   secureTextEntry,
   children,
 }) => {
-  const styles = useStyle();
+  const colorScheme = useColors();
+  const styles = useStyle(colorScheme);
 
   return (
     <View style={styles.textInputContainer}>
@@ -32,8 +33,7 @@ const CustomTextInput = ({
 
 export default CustomTextInput;
 
-const useStyle = () => {
-  const colorScheme = useColorScheme();
+const useStyle = (colorScheme) => {
   const styles = StyleSheet.create({
     textInputContainer: {
       flexDirection: "row",
@@ -43,24 +43,15 @@ const useStyle = () => {
       paddingRight: 20,
       opacity: 0.5,
       marginVertical: 10,
-      backgroundColor:
-        colorScheme === "light"
-          ? theme.light.textInput.primary
-          : theme.dark.textInput.primary,
+      backgroundColor: colorScheme.textInput.primary,
     },
     textInput: {
       borderRadius: 50,
       flex: 1,
       padding: 20,
       marginLeft: 0,
-      color:
-        colorScheme === "light"
-          ? theme.light.text.primary
-          : theme.dark.text.primary,
-      backgroundColor:
-        colorScheme === "light"
-          ? theme.light.textInput.primary
-          : theme.dark.textInput.primary,
+      color: colorScheme.text.primary,
+      backgroundColor: colorScheme.textInput.primary,
     },
   });
   return styles;

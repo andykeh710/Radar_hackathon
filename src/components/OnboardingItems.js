@@ -4,13 +4,12 @@ import {
   Text,
   View,
   Image,
-  useColorScheme,
   useWindowDimensions,
 } from "react-native";
-import { typography, theme } from "../misc/styles";
+import { typography } from "../misc/styles";
 
-const OnboardingItems = ({ item }) => {
-  const styles = useStyle();
+const OnboardingItems = ({ item, colorScheme }) => {
+  const styles = useStyle(colorScheme);
   return (
     <View style={styles.container}>
       <Image source={item.image} style={styles.image} />
@@ -24,19 +23,15 @@ const OnboardingItems = ({ item }) => {
 
 export default OnboardingItems;
 
-const useStyle = () => {
+const useStyle = (colorScheme) => {
   const { width } = useWindowDimensions();
-  const colorScheme = useColorScheme();
   const styles = StyleSheet.create({
     description: {
       fontSize: typography.fontStyles.subheading.size,
       paddingHorizontal: 64,
       letterSpacing: 1.5,
       textAlign: "center",
-      color:
-        colorScheme === "light"
-          ? theme.light.text.primary
-          : theme.dark.text.primary,
+      color: colorScheme.text.primary,
     },
     container: {
       flex: 1,
@@ -55,10 +50,7 @@ const useStyle = () => {
     },
     title: {
       fontSize: typography.fontStyles.title3.fontSize,
-      color:
-        colorScheme === "light"
-          ? theme.light.text.primary
-          : theme.dark.text.primary,
+      color: colorScheme.text.primary,
       fontWeight: "bold",
       padding: 20,
       textAlign: "center",

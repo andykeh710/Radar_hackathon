@@ -1,22 +1,19 @@
 import React from "react";
-import { StyleSheet, View, useColorScheme } from "react-native";
+import { StyleSheet, View } from "react-native";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Button from "./Button";
-import { theme } from "../misc/styles";
+import { useColors } from "../hooks/useColors";
 
-const SocialButton = ({ icon, onPress, colorScheme }) => {
-  const styles = useStyle();
+const SocialButton = ({ icon, onPress }) => {
+  const colorScheme = useColors();
+  const styles = useStyle(colorScheme);
   return (
     <View style={styles.buttonWrapper}>
       <Button onPress={onPress}>
         <FontAwesome5
           name={icon}
           size={24}
-          color={
-            colorScheme === "light"
-              ? theme.light.button.activeIcon
-              : theme.dark.button.activeIcon
-          }
+          color={colorScheme.button.activeIcon}
         />
       </Button>
     </View>
@@ -25,19 +22,15 @@ const SocialButton = ({ icon, onPress, colorScheme }) => {
 
 export default SocialButton;
 
-const useStyle = () => {
-  const colorScheme = useColorScheme();
-  const BUTTON_SIZE = 60;
+const useStyle = (colorScheme) => {
+  const BUTTON_SIZE = 55;
   const styles = StyleSheet.create({
     buttonWrapper: {
       width: BUTTON_SIZE,
       height: BUTTON_SIZE,
       padding: 10,
       borderRadius: 100,
-      backgroundColor:
-        colorScheme === "light"
-          ? theme.light.button.activeBg
-          : theme.dark.button.activeBg,
+      backgroundColor: colorScheme.button.activeBg,
       justifyContent: "center",
       alignItems: "center",
       margin: 10,

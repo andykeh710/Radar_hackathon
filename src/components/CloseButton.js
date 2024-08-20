@@ -3,18 +3,16 @@ import React from "react";
 import Button from "./Button";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { theme } from "../misc/styles";
+import { useColors } from "../hooks/useColors";
 
-const CloseButton = ({ colorScheme, onClose }) => {
+const CloseButton = ({ onClose }) => {
+  const colorScheme = useColors();
   return (
     <Button onPress={onClose}>
       <AntDesign
         name="closecircleo"
         size={24}
-        color={
-          colorScheme === "light"
-            ? theme.light.text.primary
-            : theme.dark.text.primary
-        }
+        color={colorScheme.text.primary}
       />
     </Button>
   );
