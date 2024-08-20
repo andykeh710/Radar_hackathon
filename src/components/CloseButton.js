@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 import React from "react";
 import Button from "./Button";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { theme } from "../misc/styles";
 import { useColors } from "../hooks/useColors";
 
 const CloseButton = ({ onClose }) => {

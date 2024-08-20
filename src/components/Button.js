@@ -1,4 +1,4 @@
-import { StyleSheet, Pressable } from "react-native";
+import { Pressable } from "react-native";
 import React from "react";
 
 const Button = ({ children, style, onPress, disabled }) => {
@@ -10,5 +10,3 @@ const Button = ({ children, style, onPress, disabled }) => {
 };
 
 export default Button;
-
-const styles = StyleSheet.create({});

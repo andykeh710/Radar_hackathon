@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { StyleSheet, Text, View, useColorScheme } from "react-native";
-import { theme } from "../misc/styles";
 // Custom Components
 import Button from "../components/Button";
 import SignInScreen from "./SignInScreen";
@@ -9,31 +8,25 @@ import Carousel from "../components/Carousel";
 import { useColors } from "../hooks/useColors";
 
 export default function Onboarding() {
-  const [signInModalVisible, setSignInModalVisible] = useState(false);
+  const signInModalRef = useRef(null);
   const colorScheme = useColorScheme();
   const styles = useStyle();
+  const handleSignInModal = () => signInModalRef.current?.openModal();
 
   return (
     <View style={styles.container}>
       <Carousel />
-
       <View style={styles.card}>
         <GradientButton
           colorScheme={colorScheme}
           label="CREATE ACCOUNT"
           style={{ marginHorizontal: 30 }}
         />
-        <Button
-          style={styles.buttonSimple}
-          onPress={() => setSignInModalVisible(true)}
-        >
+        <Button style={styles.buttonSimple} onPress={() => handleSignInModal()}>
           <Text style={styles.buttonLabel}>SIGN IN</Text>
         </Button>
       </View>
-      <SignInScreen
-        isVisible={signInModalVisible}
-        onClose={() => setSignInModalVisible(false)}
-      />
+      <SignInScreen ref={signInModalRef} />
     </View>
   );
 }

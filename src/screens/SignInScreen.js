@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useImperativeHandle, forwardRef } from "react";
 import { Modal, StyleSheet, Text, View, useColorScheme } from "react-native";
 import { BlurView } from "expo-blur";
 import { stylings, typography } from "../misc/styles";
@@ -9,21 +9,28 @@ import SocialButton from "../components/SocialButton";
 import GradientButton from "../components/GradientButton";
 import { useColors } from "../hooks/useColors";
 
-const SignInScreen = ({ isVisible, onClose }) => {
+const SignInScreen = (_, ref) => {
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",
   });
+  const [signInModalVisible, setSignInModalVisible] = useState(false);
   const styles = useStyle();
   const colorScheme = useColorScheme();
   const tint = colorScheme === "light" ? "systemThinMaterialLight" : "dark";
-
   const handleUsernameChange = (username) => {
     setLoginData({
       ...loginData,
       username,
     });
   };
+
+  // Pass the ref of setModalIsVisible Function to parent
+  useImperativeHandle(ref, () => ({
+    openModal: () => setSignInModalVisible(true),
+  }));
+
+  const handleClose = () => setSignInModalVisible(false);
 
   const handlePasswordChange = (password) => {
     setLoginData({
@@ -62,16 +69,19 @@ const SignInScreen = ({ isVisible, onClose }) => {
   };
 
   return (
-    <Modal animationType="slide" transparent={true} visible={isVisible}>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={signInModalVisible}
+    >
       <BlurView intensity={90} tint={tint} style={styles.modalContent}>
         <View style={styles.headerContainer}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Sign In</Text>
             <Text style={styles.subtitle}>Welcome Back</Text>
           </View>
-          <CloseButton onClose={onClose} colorScheme={colorScheme} />
+          <CloseButton onClose={handleClose} colorScheme={colorScheme} />
         </View>
-
         <View style={styles.loginFormContainer}>
           <FormTextInput
             value={loginData.username}
@@ -92,7 +102,6 @@ const SignInScreen = ({ isVisible, onClose }) => {
             icon="key"
             colorScheme={colorScheme}
           />
-
           <View style={styles.pwdCaptaionContainer}>
             <Text style={styles.caption}>Forgot Password?</Text>
             <Button onPress={handlePasswordRecovery}>
@@ -222,4 +231,4 @@ const useStyle = () => {
   return styles;
 };
 
-export default SignInScreen;
+export default forwardRef(SignInScreen);
