@@ -5,7 +5,7 @@ import { stylings, typography } from "../misc/styles";
 import FormTextInput from "../components/FormTextInput";
 import Button from "../components/Button";
 import CloseButton from "../components/CloseButton";
-import SocialButton from "../components/SocialButton";
+import CircularButton from "../components/CircularButton";
 import GradientButton from "../components/GradientButton";
 import { useColors } from "../hooks/useColors";
 
@@ -122,17 +122,17 @@ const SignInScreen = (_, ref) => {
             <Text style={styles.descriptionText}>or continue with</Text>
           </View>
           <View style={styles.socialBtnContainer}>
-            <SocialButton
+            <CircularButton
               icon="apple"
               colorScheme={colorScheme}
               onPress={handleAppleSignIn}
             />
-            <SocialButton
+            <CircularButton
               icon="google"
               colorScheme={colorScheme}
               onPress={handleGoogleSignIn}
             />
-            <SocialButton
+            <CircularButton
               icon="facebook"
               colorScheme={colorScheme}
               onPress={handleFacebookSignIn}
@@ -189,8 +189,8 @@ const useStyle = () => {
     modalContent: {
       position: "absolute",
       bottom: 0,
-      borderTopLeftRadius: stylings.borderRadius,
-      borderTopRightRadius: stylings.borderRadius,
+      borderTopLeftRadius: stylings.borderRadiusLarge,
+      borderTopRightRadius: stylings.borderRadiusLarge,
       overflow: "hidden",
       width: "100%",
       height: "93%",

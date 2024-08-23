@@ -62,7 +62,9 @@ export const theme = {
 };
 
 export const stylings = {
-  borderRadius: 40,
+  borderRadiusLarge: 40,
+  borderRadiusMedium: 30,
+  borderRadiusSmall: 20,
 };
 
 export const typography = {
@@ -90,31 +92,31 @@ export const typography = {
     },
     body: {
       weight: "regular",
-      size: 17,
+      fontSize: 17,
     },
     callout: {
       weight: "regular",
-      size: 16,
+      fontSize: 16,
     },
     subheading: {
       weight: "regular",
-      size: 15,
+      fontSize: 15,
     },
     subheadingLight: {
       weight: "300",
-      size: 15,
+      fontSize: 15,
     },
     footnote: {
       weight: "regular",
-      size: 13,
+      fontSize: 13,
     },
     caption1: {
       weight: "regular",
-      size: 12,
+      fontSize: 12,
     },
     caption2: {
       weight: "regular",
-      size: 11,
+      fontSize: 11,
     },
   },
 };

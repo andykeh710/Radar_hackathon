@@ -4,15 +4,15 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Button from "./Button";
 import { useColors } from "../hooks/useColors";
 
-const SocialButton = ({ icon, onPress }) => {
+const CircularButton = ({ icon, iconSize = "24", onPress, style }) => {
   const colorScheme = useColors();
   const styles = useStyle(colorScheme);
   return (
-    <View style={styles.buttonWrapper}>
+    <View style={[styles.buttonWrapper, style]}>
       <Button onPress={onPress}>
         <FontAwesome5
           name={icon}
-          size={24}
+          size={iconSize}
           color={colorScheme.button.activeIcon}
         />
       </Button>
@@ -20,7 +20,7 @@ const SocialButton = ({ icon, onPress }) => {
   );
 };
 
-export default SocialButton;
+export default CircularButton;
 
 const useStyle = (colorScheme) => {
   const BUTTON_SIZE = 55;
