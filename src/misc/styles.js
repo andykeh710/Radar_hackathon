@@ -65,6 +65,7 @@ export const stylings = {
   borderRadiusLarge: 40,
   borderRadiusMedium: 30,
   borderRadiusSmall: 20,
+  letterSpacing: 1,
 };
 
 export const typography = {
