@@ -2,8 +2,10 @@ export const theme = {
   light: {
     // background
     background: {
-      primary: "#ffffff",
-      cardBg: "#EDEDED",
+      primary: "#EDEDED",
+      cardBg: "#ffffff",
+      // primary: "#ffffff",
+      // cardBg: "#EDEDED",
       gradient: ["#7253E8", "#914BAA"],
       onCardBg: "#ffffff",
     },
@@ -32,8 +34,10 @@ export const theme = {
   dark: {
     // background
     background: {
-      primary: "#24283F",
-      cardBg: "#0D1025",
+      // primary: "#24283F",
+      primary: "#0D1025",
+      cardBg: "#24283F",
+      //  cardBg: "#0D1025",
       gradient: ["#7253E8", "#914BAA"],
       onCardBg: "#867FA1",
     },

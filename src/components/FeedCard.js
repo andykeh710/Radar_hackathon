@@ -5,13 +5,12 @@ import { useColors } from "../hooks/useColors";
 import Avatar from "./Avatar";
 import InfluencerAvatar from "./InfluencerAvatar";
 
-const FeedCard = ({ avatar }) => {
+const FeedCard = ({ author }) => {
   const styles = useStyle();
   return <View style={styles.container}></View>;
 };
 
 export default FeedCard;
-
 const useStyle = () => {
   const colorScheme = useColors();
   const styles = StyleSheet.create({

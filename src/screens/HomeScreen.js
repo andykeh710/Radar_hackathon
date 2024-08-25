@@ -6,8 +6,9 @@ import {
   ScrollView,
   useWindowDimensions,
   useColorScheme,
+  FlatList,
 } from "react-native";
-import React, { useState, useMemo } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useColors } from "../hooks/useColors";
 import { typography, stylings } from "../misc/styles";
 import CircularButton from "../components/CircularButton";
@@ -40,6 +41,7 @@ const HomeScreen = () => {
         </View>
         <View style={styles.feedSectionContainer}>
           <Text style={styles.sectionTitle}>Feeds</Text>
+          <FeedSection />
         </View>
       </ScrollView>
     </View>
@@ -83,16 +85,14 @@ const useStyle = () => {
       padding: 20,
       justifyContent: "center",
     },
-    glanceSectionContainer: {
-      flex: 1,
-    },
+    glanceSectionContainer: {},
     sectionTitle: {
       color: colorScheme.text.secondary,
       fontSize: typography.fontStyles.caption1.fontSize,
       fontWeight: "600",
       letterSpacing: stylings.letterSpacing,
       paddingHorizontal: 20,
-      marginBottom: 10,
+      marginVertical: 8,
     },
     userNameText: {
       color: colorScheme.text.primary,
@@ -116,7 +116,6 @@ const useStyle = () => {
       flex: 1,
       paddingHorizontal: 15,
     },
-
     topCard: {
       flex: 1,
       paddingTop: height * 0.16,
@@ -163,35 +162,52 @@ const HeaderSection = ({ styles }) => {
 
 const FilterSection = ({ styles, colorScheme }) => {
   const [activeFilter, setActiveFilter] = useState(categories.TRENDING);
+  const [index, setIndex] = useState(0);
+  const ref = useRef(null);
   // data
   const INFLUENCERS = _influencers;
   // functions
-  const handleFilterPress = (filter) => {
+  const handleFilterPress = (filter, index) => {
     setActiveFilter(filter.option);
+    setIndex(index);
   };
+
+  useEffect(() => {
+    ref.current?.scrollToIndex({
+      index,
+      animated: true,
+      viewOffset: 5,
+      viewPosition: 0.5,
+    });
+  }, [index]);
+
   return (
     <>
       <View style={styles.glanceSectionContainer}>
         <Text style={styles.sectionTitle}>At a glance</Text>
-        <ScrollView
+        <FlatList
+          ref={ref}
+          contentContainerStyle={{ paddingRight: 20 }}
           style={styles.tabScrollContainer}
           horizontal
           showsHorizontalScrollIndicator={false}
-        >
-          {filterOptions.map((filter) => (
+          initialScrollIndex={0}
+          data={filterOptions}
+          keyExtractor={(item) => item.option}
+          renderItem={({ item, index }) => (
             <Filters
-              key={filter.label}
+              key={item.label}
               activeFilter={activeFilter}
-              filter={filter}
-              onPress={() => handleFilterPress(filter)}
+              filter={item}
+              onPress={() => handleFilterPress(item, index)}
             />
-          ))}
-        </ScrollView>
+          )}
+        />
       </View>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 20 }}
+        contentContainerStyle={{ paddingHorizontal: 15 }}
         style={styles.avatarsContainer}
       >
         {INFLUENCERS.filter((influencer) =>
@@ -208,6 +224,6 @@ const FilterSection = ({ styles, colorScheme }) => {
   );
 };
 
-const FeedSection = (avatar) => {
-  return <FeedCard avatar={avatar} />;
+const FeedSection = () => {
+  return <FeedCard />;
 };

@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import Onboarding from "./src/screens/Onboarding";
 import HomeScreen from "./src/screens/HomeScreen";
 import ThemeProvider from "./src/context/ThemeProvider";
+import "react-native-reanimated";
 
 const App = () => {
   return (
