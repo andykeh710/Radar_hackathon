@@ -1,4 +1,12 @@
-import { SafeAreaView, StyleSheet, Text, View, ScrollView } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  useWindowDimensions,
+  useColorScheme,
+} from "react-native";
 import React, { useState, useMemo } from "react";
 import { useColors } from "../hooks/useColors";
 import { typography, stylings } from "../misc/styles";
@@ -8,34 +16,30 @@ import { categories, filterOptions } from "../misc/constants";
 import InfluencerAvatar from "../components/InfluencerAvatar";
 import Filters from "../components/Filters";
 import Avatar from "../components/Avatar";
+import FeedCard from "../components/FeedCard";
+import { BlurView } from "expo-blur";
 
 const HomeScreen = () => {
   const styles = useStyle();
-  const colorScheme = useColors();
-
-  // Variables to be replaced after data fetching is
-  // implemented
-  const USERNAME = "Ethmaster";
-  const AVATAR = useMemo(() => ({
-    uri: "https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg",
-  }));
-
-  // data
-  const INFLUENCERS = _influencers;
-
+  const colorScheme = useColorScheme();
+  const tint = colorScheme === "light" ? "systemThinMaterialLight" : "dark";
   return (
     <View style={styles.container}>
+      <BlurView
+        intensity={90}
+        tint={tint}
+        style={styles.headerSectionContainer}
+      >
+        <SafeAreaView>
+          <HeaderSection styles={styles} />
+        </SafeAreaView>
+      </BlurView>
       <ScrollView>
         <View style={styles.topCard}>
-          <SafeAreaView style={styles.topCardContentContainer}>
-            <Header avatar={AVATAR} userName={USERNAME} styles={styles} />
-            <FilterMenu
-              filterOptions={filterOptions}
-              influencers={INFLUENCERS}
-              styles={styles}
-              colorScheme={colorScheme}
-            />
-          </SafeAreaView>
+          <FilterSection styles={styles} colorScheme={colorScheme} />
+        </View>
+        <View style={styles.feedSectionContainer}>
+          <Text style={styles.sectionTitle}>Feeds</Text>
         </View>
       </ScrollView>
     </View>
@@ -46,12 +50,14 @@ export default HomeScreen;
 
 const useStyle = () => {
   const colorScheme = useColors();
+  const { width, height } = useWindowDimensions();
+
   const styles = StyleSheet.create({
     avatarsContainer: {
       flex: 1,
       flexDirection: "row",
-      paddingTop: 20,
-      paddingBottom: 10,
+      paddingVertical: 15,
+      marginBottom: 10,
     },
     buttonContainer: {
       justifyContent: "center",
@@ -72,9 +78,13 @@ const useStyle = () => {
       letterSpacing: stylings.letterSpacing,
       marginVertical: 3,
     },
+    feedSectionContainer: {
+      flex: 1,
+      padding: 20,
+      justifyContent: "center",
+    },
     glanceSectionContainer: {
-      flex: 0.5,
-      marginTop: 5,
+      flex: 1,
     },
     sectionTitle: {
       color: colorScheme.text.secondary,
@@ -91,22 +101,13 @@ const useStyle = () => {
       letterSpacing: stylings.letterSpacing,
     },
     userSectionContainer: {
-      flex: 0.5,
       flexDirection: "row",
       justifyContent: "space-between",
-      marginBottom: 20,
     },
     userContainer: {
       flexDirection: "row",
       alignItems: "center",
       marginHorizontal: 20,
-    },
-    userAvatarContainer: {
-      height: 50,
-      width: 50,
-      borderRadius: 50,
-      resizeMode: "contain",
-      marginRight: 10,
     },
     userNameContainer: {
       paddingHorizontal: 20,
@@ -115,53 +116,42 @@ const useStyle = () => {
       flex: 1,
       paddingHorizontal: 15,
     },
-    tabContainer: {
-      flexDirection: "row",
-      justifyContent: "space-around",
-    },
 
-    tab: {
-      justifyContent: "center",
-      alignItems: "center",
-      paddingVertical: 10,
-      paddingHorizontal: 20,
-      borderRadius: 20,
-      backgroundColor: colorScheme.button.inactiveBg,
-      margin: 5,
-    },
-    inactiveTab: {
-      opacity: 0.5,
-    },
-    tabText: {
-      color: colorScheme.text.onButtonPrimary,
-      letterSpacing: stylings.letterSpacing,
-      fontSize: typography.fontStyles.caption2.fontSize,
-      fontWeight: "500",
-    },
     topCard: {
       flex: 1,
+      paddingTop: height * 0.16,
       backgroundColor: colorScheme.background.cardBg,
-
       borderBottomLeftRadius: stylings.borderRadiusMedium,
       borderBottomRightRadius: stylings.borderRadiusMedium,
     },
-    topCardContentContainer: {
-      flex: 1,
-      justifyContent: "space-between",
-      marginBottom: 20,
+    headerSectionContainer: {
+      overflow: "hidden",
+      borderBottomLeftRadius: stylings.borderRadiusMedium,
+      borderBottomRightRadius: stylings.borderRadiusMedium,
+      position: "absolute",
+      height: height * 0.15,
+      width: width,
+      top: 0,
+      zIndex: 1,
     },
   });
   return styles;
 };
 
-const Header = ({ avatar, styles, userName }) => {
+const HeaderSection = ({ styles }) => {
+  // Variables to be replaced once backend is ready
+  const AVATAR = {
+    uri: "https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg",
+  };
+  const USERNAME = "Ethmaster";
+
   return (
     <View style={styles.userSectionContainer}>
       <View style={styles.userContainer}>
-        <Avatar image={avatar} />
+        <Avatar image={AVATAR} />
         <View style={styles.userNameContainer}>
           <Text style={styles.caption}>Welcome Back</Text>
-          <Text style={styles.userNameText}>{userName}</Text>
+          <Text style={styles.userNameText}>{USERNAME}</Text>
         </View>
       </View>
       <View style={styles.buttonContainer}>
@@ -171,9 +161,10 @@ const Header = ({ avatar, styles, userName }) => {
   );
 };
 
-const FilterMenu = ({ styles, filterOptions, influencers, colorScheme }) => {
+const FilterSection = ({ styles, colorScheme }) => {
   const [activeFilter, setActiveFilter] = useState(categories.TRENDING);
-
+  // data
+  const INFLUENCERS = _influencers;
   // functions
   const handleFilterPress = (filter) => {
     setActiveFilter(filter.option);
@@ -203,16 +194,20 @@ const FilterMenu = ({ styles, filterOptions, influencers, colorScheme }) => {
         contentContainerStyle={{ paddingHorizontal: 20 }}
         style={styles.avatarsContainer}
       >
-        {influencers
-          .filter((influencer) => influencer.category.includes(activeFilter))
-          .map((influencer) => (
-            <InfluencerAvatar
-              key={influencer.username}
-              influencer={influencer}
-              colorScheme={colorScheme}
-            />
-          ))}
+        {INFLUENCERS.filter((influencer) =>
+          influencer.category.includes(activeFilter)
+        ).map((influencer) => (
+          <InfluencerAvatar
+            key={influencer.username}
+            influencer={influencer}
+            colorScheme={colorScheme}
+          />
+        ))}
       </ScrollView>
     </>
   );
+};
+
+const FeedSection = (avatar) => {
+  return <FeedCard avatar={avatar} />;
 };
