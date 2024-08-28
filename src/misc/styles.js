@@ -16,7 +16,7 @@ export const theme = {
       activeIcon: "#ffffff",
       activeLabel: "#ffffff",
       activeLabelInversed: "#000000",
-      activeHighlightBg: ["#000000", "#000000"],
+      activeHighlightBg: ["#ff9d49", "#ffdf14"],
       inactiveBg: "#D3D3D3",
       inactiveLabel: "#A4A4A4",
       disabledBg: ["#EDEDED"],

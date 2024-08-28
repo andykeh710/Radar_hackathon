@@ -21,7 +21,6 @@ const ProgressBar = ({ progress = 95.4, description }) => {
       <View
         style={{
           width: "50",
-
           width: 100,
           paddingStart: 20,
         }}
