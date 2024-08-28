@@ -18,7 +18,7 @@ const useStyle = () => {
     scoreText: {
       fontWeight: "bold",
       fontSize: 20,
-      color: "#ffff",
+      color: colorScheme.text.primary,
     },
     descriptionText: {
       color: colorScheme.text.primary,
