@@ -13,12 +13,13 @@ import { useColors } from "../hooks/useColors";
 import { typography, stylings } from "../misc/styles";
 import CircularButton from "../components/CircularButton";
 import { _influencers } from "../data/influencers";
-import { categories, filterOptions } from "../misc/constants";
+import { FILTER_CATEGORIES, FILTER_OPTIONS } from "../misc/constants";
 import InfluencerAvatar from "../components/InfluencerAvatar";
 import Filters from "../components/Filters";
 import Avatar from "../components/Avatar";
 import FeedCard from "../components/FeedCard";
 import { BlurView } from "expo-blur";
+import { FEED_POST_DATA } from "../data/feedPostData";
 
 const HomeScreen = () => {
   const styles = useStyle();
@@ -35,13 +36,15 @@ const HomeScreen = () => {
           <HeaderSection styles={styles} />
         </SafeAreaView>
       </BlurView>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.topCard}>
           <FilterSection styles={styles} colorScheme={colorScheme} />
         </View>
         <View style={styles.feedSectionContainer}>
           <Text style={styles.sectionTitle}>Feeds</Text>
-          <FeedSection />
+          {FEED_POST_DATA.map((data) => (
+            <FeedCard key={data.content.id} data={data} />
+          ))}
         </View>
       </ScrollView>
     </View>
@@ -82,7 +85,8 @@ const useStyle = () => {
     },
     feedSectionContainer: {
       flex: 1,
-      padding: 20,
+      padding: 10,
+      marginTop: 30,
       justifyContent: "center",
     },
     glanceSectionContainer: {},
@@ -128,7 +132,7 @@ const useStyle = () => {
       borderBottomLeftRadius: stylings.borderRadiusMedium,
       borderBottomRightRadius: stylings.borderRadiusMedium,
       position: "absolute",
-      height: height * 0.15,
+      height: height * 0.16,
       width: width,
       top: 0,
       zIndex: 1,
@@ -161,7 +165,7 @@ const HeaderSection = ({ styles }) => {
 };
 
 const FilterSection = ({ styles, colorScheme }) => {
-  const [activeFilter, setActiveFilter] = useState(categories.TRENDING);
+  const [activeFilter, setActiveFilter] = useState(FILTER_CATEGORIES.TRENDING);
   const [index, setIndex] = useState(0);
   const ref = useRef(null);
   // data
@@ -192,7 +196,7 @@ const FilterSection = ({ styles, colorScheme }) => {
           horizontal
           showsHorizontalScrollIndicator={false}
           initialScrollIndex={0}
-          data={filterOptions}
+          data={FILTER_OPTIONS}
           keyExtractor={(item) => item.option}
           renderItem={({ item, index }) => (
             <Filters
@@ -224,6 +228,6 @@ const FilterSection = ({ styles, colorScheme }) => {
   );
 };
 
-const FeedSection = () => {
-  return <FeedCard />;
+const FeedSection = ({ feedData }) => {
+  feedData.map((feedDatum) => <FeedCard data={feedDatum} />);
 };

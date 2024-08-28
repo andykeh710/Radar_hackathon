@@ -3,11 +3,12 @@ export const theme = {
     // background
     background: {
       primary: "#EDEDED",
+      secondary: "",
       cardBg: "#ffffff",
       // primary: "#ffffff",
       // cardBg: "#EDEDED",
       gradient: ["#7253E8", "#914BAA"],
-      onCardBg: "#ffffff",
+      onCardBg: "#EDEDED",
     },
     // button
     button: {
@@ -36,6 +37,7 @@ export const theme = {
     background: {
       // primary: "#24283F",
       primary: "#0D1025",
+      secondary: "",
       cardBg: "#24283F",
       //  cardBg: "#0D1025",
       gradient: ["#7253E8", "#914BAA"],

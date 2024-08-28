@@ -1,28 +1,28 @@
-export const categories = {
+export const FILTER_CATEGORIES = {
   NEW: "new",
   TRENDING: "trending",
   TOP: "top_influencer",
   RECOMMENDED: "recommended",
 };
 
-export const filterOptions = [
+export const FILTER_OPTIONS = [
   {
-    option: categories.TRENDING,
+    option: FILTER_CATEGORIES.TRENDING,
     label: "Trending",
     active: true,
   },
   {
-    option: categories.NEW,
+    option: FILTER_CATEGORIES.NEW,
     label: "New",
     active: false,
   },
   {
-    option: categories.RECOMMENDED,
+    option: FILTER_CATEGORIES.RECOMMENDED,
     label: "Recommended",
     active: false,
   },
   {
-    option: categories.TOP,
+    option: FILTER_CATEGORIES.TOP,
     label: "Top Influencers",
     active: false,
   },
