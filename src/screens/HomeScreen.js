@@ -227,7 +227,3 @@ const FilterSection = ({ styles, colorScheme }) => {
     </>
   );
 };
-
-const FeedSection = ({ feedData }) => {
-  feedData.map((feedDatum) => <FeedCard data={feedDatum} />);
-};
