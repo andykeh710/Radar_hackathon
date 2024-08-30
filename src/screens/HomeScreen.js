@@ -8,7 +8,7 @@ import {
   useColorScheme,
   FlatList,
 } from "react-native";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import { useColors } from "../hooks/useColors";
 import { typography, stylings } from "../misc/styles";
 import CircularButton from "../components/CircularButton";
@@ -43,7 +43,10 @@ const HomeScreen = () => {
         <View style={styles.feedSectionContainer}>
           <Text style={styles.sectionTitle}>Feeds</Text>
           {FEED_POST_DATA.map((data) => (
-            <FeedCard key={data.content.id} data={data} />
+            <FeedCard
+              key={`${data.content.id} + ${data.author.handle}`}
+              data={data}
+            />
           ))}
         </View>
       </ScrollView>
@@ -143,9 +146,12 @@ const useStyle = () => {
 
 const HeaderSection = ({ styles }) => {
   // Variables to be replaced once backend is ready
-  const AVATAR = {
-    uri: "https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg",
-  };
+  const AVATAR = useMemo(
+    () => ({
+      uri: "https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg",
+    }),
+    []
+  );
   const USERNAME = "Ethmaster";
 
   return (
@@ -216,9 +222,9 @@ const FilterSection = ({ styles, colorScheme }) => {
       >
         {INFLUENCERS.filter((influencer) =>
           influencer.category.includes(activeFilter)
-        ).map((influencer) => (
+        ).map((influencer, index) => (
           <InfluencerAvatar
-            key={influencer.username}
+            key={index}
             influencer={influencer}
             colorScheme={colorScheme}
           />

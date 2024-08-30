@@ -7,7 +7,7 @@ import ScoreBarChart from "../patterns/ScoreBarChart";
 import FeedPostReactButton from "./FeedPostReactButton";
 import { getAuthorAvatar } from "../utils/helpers";
 
-const FeedCard = ({ data }) => {
+const FeedCard = ({ data, ...props }) => {
   const styles = useStyle();
   return (
     <View style={styles.container}>

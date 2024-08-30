@@ -1,14 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useMemo } from "react";
 import { typography } from "../misc/styles";
 import { useColors } from "../hooks/useColors";
 import Avatar from "./Avatar";
 
 const InfluencerAvatar = ({ influencer, horizontal = false }) => {
   const styles = useStyle(horizontal);
+  const avatar = useMemo(() => influencer.avatar, [influencer]);
   return (
     <View style={styles.influencerAvatarContainer}>
-      <Avatar image={influencer.avatar} size={60} />
+      <Avatar image={avatar} size={60} />
       <View style={styles.textContainer}>
         <Text style={styles.influencerNameText}>{influencer.username}</Text>
         <Text style={styles.influencerHandleText}>{influencer.handle}</Text>

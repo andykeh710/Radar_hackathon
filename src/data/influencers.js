@@ -2,6 +2,7 @@ import { FILTER_CATEGORIES } from "../misc/constants";
 
 export const _influencers = [
   {
+    id: 1,
     username: "MMCrypto",
     handle: "@mmcrypto",
     avatar: {
@@ -14,6 +15,7 @@ export const _influencers = [
     ],
   },
   {
+    id: 2,
     username: "Lia Sadia",
     handle: "@salsabeela",
     avatar: { uri: "https://pbs.twimg.com/media/FmZf1SWagAAiGNg.jpg" },
