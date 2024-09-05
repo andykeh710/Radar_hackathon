@@ -17,7 +17,8 @@ const GradientButton = ({ onPress, label, style, disabled = false }) => {
     },
     buttonLabel: {
       color: colorScheme.button.activeLabelInversed,
-      letterSpacing: 2,
+      letterSpacing: 1,
+      fontWeight: "500",
     },
   });
   return (
@@ -25,6 +26,8 @@ const GradientButton = ({ onPress, label, style, disabled = false }) => {
       <LinearGradient
         style={[styles.button, style]}
         colors={colorScheme.button.activeHighlightBg}
+        start={{ x: -1, y: 2 }}
+        end={{ x: 2, y: 0 }}
       >
         <Text style={[styles.buttonLabel, { color: "#ffffff" }]}>{label}</Text>
       </LinearGradient>
