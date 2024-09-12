@@ -53,7 +53,7 @@ const FeedPostAvatar = ({ author }) => {
 
   return (
     <View style={styles.container}>
-      <Avatar image={avatar} size={40} style={{ margin: 20 }} />
+      <Avatar image={avatar} size={50} style={{ margin: 20 }} />
       <View>
         <Text style={styles.avatarName}>{author.name}</Text>
         <Text style={styles.avatarHandle}>{author.handle}</Text>

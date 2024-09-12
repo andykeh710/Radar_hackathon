@@ -26,6 +26,7 @@ export const theme = {
     text: {
       primary: "#000000",
       onButtonPrimary: "#ffffff",
+      onButtonPrimaryDark: "#000000",
       secondary: "#6B6B6B",
     },
     textInput: {
@@ -45,8 +46,8 @@ export const theme = {
     },
     // button
     button: {
-      activeBg: "#24283F",
-      activeIcon: "#867FA1",
+      activeIcon: "#24283F",
+      activeBg: "#867FA1",
       activeLabel: "#ffffff",
       activeLabelInversed: "#ffffff",
       activeHighlightBg: ["#7253E8", "#914BAA"],
@@ -59,6 +60,7 @@ export const theme = {
     text: {
       primary: "#ffffff",
       onButtonPrimary: "#ffffff",
+      onButtonPrimaryDark: "#ffffff",
       secondary: "#867FA1",
     },
     textInput: {

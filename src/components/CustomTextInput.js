@@ -8,7 +8,9 @@ const CustomTextInput = ({
   onChangeText,
   keyboardType,
   secureTextEntry,
+  autoComplete,
   children,
+  textFieldStyle,
 }) => {
   const colorScheme = useColors();
   const styles = useStyle(colorScheme);
@@ -17,14 +19,14 @@ const CustomTextInput = ({
     <View style={styles.textInputContainer}>
       {children}
       <TextInput
-        style={styles.textInput}
+        style={[styles.textInput, textFieldStyle]}
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
         keyboardType={keyboardType}
         secureTextEntry={secureTextEntry}
         autoCapitalize={false}
-        autoComplete={false}
+        autoComplete={autoComplete}
         clearButtonMode="while-editing"
       />
     </View>
@@ -39,17 +41,16 @@ const useStyle = (colorScheme) => {
       flexDirection: "row",
       alignItems: "center",
       borderRadius: 50,
-      paddingLeft: 20,
-      paddingRight: 20,
-      opacity: 0.5,
+      paddingHorizontal: 15,
+      opacity: 0.6,
       marginVertical: 10,
+      width: "80%",
       backgroundColor: colorScheme.textInput.primary,
     },
     textInput: {
       borderRadius: 50,
       flex: 1,
-      padding: 20,
-      marginLeft: 0,
+      padding: 10,
       color: colorScheme.text.primary,
       backgroundColor: colorScheme.textInput.primary,
     },

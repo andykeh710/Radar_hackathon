@@ -6,25 +6,37 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import React from "react";
-import ScoreBlock from "../components/ScoreBlock";
+import React, { useRef } from "react";
 import { useColors } from "../hooks/useColors";
-import Accolade from "../components/Accolade";
-import { stylings, typography } from "../misc/styles";
+import { stylings } from "../misc/styles";
 import Avatar from "../components/Avatar";
 import GradientButton from "../components/GradientButton";
 import ScoreBlockGroup from "../patterns/ScoreBlockGroup";
 import AccoladeGroup from "../patterns/AccoladeGroup";
 import MentionGroup from "../patterns/MentionGroup";
 import UserIdentityGroup from "../patterns/UserIdentityGroup";
+import CircularButton from "../components/CircularButton";
+import SettingScreen from "./SettingScreen";
 
 const ProfileScreen = () => {
   const styles = useStyle();
+  const settingRef = useRef(null);
+
+  handleSettingPress = () => {
+    settingRef.current?.openModal();
+  };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.topCard}>
         <SafeAreaView style={styles.contentContainer}>
+          <View style={styles.settingButton}>
+            <CircularButton
+              icon="gear"
+              iconSize="20"
+              onPress={handleSettingPress}
+            />
+          </View>
           <View style={styles.avatar}>
             <Avatar
               image={{ uri: "https://pbs.twimg.com/media/FmZf1SWagAAiGNg.jpg" }}
@@ -39,6 +51,7 @@ const ProfileScreen = () => {
           <AccoladeGroup />
         </SafeAreaView>
       </View>
+      <SettingScreen ref={settingRef} />
     </ScrollView>
   );
 };
@@ -71,6 +84,11 @@ const useStyle = () => {
     profileScoreText: {
       color: colorScheme.text.primary,
       textAlign: "left",
+    },
+    settingButton: {
+      position: "absolute",
+      top: 35,
+      right: -10,
     },
     topCard: {
       flex: 0.3,

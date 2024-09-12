@@ -27,7 +27,7 @@ const useStyle = () => {
       alignItems: "center",
       width: SIZE,
       height: SIZE,
-      margin: 3,
+      margin: 2,
     },
     score: {
       color: colorScheme.text.primary,
@@ -36,8 +36,8 @@ const useStyle = () => {
     },
     description: {
       color: colorScheme.text.secondary,
-      fontSize: typography.fontStyles.caption1.fontSize,
-      margin: 5,
+      fontSize: typography.fontStyles.caption2.fontSize,
+      margin: 4,
     },
   });
   return styles;

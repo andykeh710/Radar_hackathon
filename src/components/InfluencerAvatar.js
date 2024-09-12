@@ -4,15 +4,26 @@ import { typography } from "../misc/styles";
 import { useColors } from "../hooks/useColors";
 import Avatar from "./Avatar";
 
-const InfluencerAvatar = ({ influencer, horizontal = false }) => {
+const InfluencerAvatar = ({
+  influencer,
+  horizontal = false,
+  size = 60,
+  outline = 0,
+  nameTextStyle,
+  handleTextStyle,
+}) => {
   const styles = useStyle(horizontal);
   const avatar = useMemo(() => influencer.avatar, [influencer]);
   return (
     <View style={styles.influencerAvatarContainer}>
-      <Avatar image={avatar} size={60} />
+      <Avatar image={avatar} size={size} outline={outline} />
       <View style={styles.textContainer}>
-        <Text style={styles.influencerNameText}>{influencer.username}</Text>
-        <Text style={styles.influencerHandleText}>{influencer.handle}</Text>
+        <Text style={[styles.influencerNameText, nameTextStyle]}>
+          {influencer.username}
+        </Text>
+        <Text style={[styles.influencerHandleText, handleTextStyle]}>
+          {influencer.handle}
+        </Text>
       </View>
     </View>
   );

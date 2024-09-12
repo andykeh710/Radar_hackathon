@@ -9,9 +9,9 @@ const FormTextInput = ({
   onChangeText,
   placeholder,
   keyboardType,
-  clearButtonMode,
   secureTextEntry = false,
   icon,
+  textFieldStyle,
 }) => {
   const colorScheme = useColors();
   return (
@@ -20,8 +20,9 @@ const FormTextInput = ({
       onChangeText={onChangeText}
       placeholder={placeholder}
       keyboardType={keyboardType}
-      clearButtonMode={clearButtonMode}
       secureTextEntry={secureTextEntry}
+      autoComplete={false}
+      textFieldStyle={textFieldStyle}
     >
       <AntDesign name={icon} size={24} color={colorScheme.text.primary} />
     </CustomTextInput>
