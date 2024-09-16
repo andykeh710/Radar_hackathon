@@ -17,5 +17,6 @@ export default AccoladeGroup;
 const styles = StyleSheet.create({
   accoladesContainer: {
     flexDirection: "row",
+    justifyContent: "center",
   },
 });

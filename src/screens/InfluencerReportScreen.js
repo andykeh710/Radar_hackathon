@@ -60,7 +60,6 @@ const useStyle = () => {
   const styles = StyleSheet.create({
     accoladeSectionContainer: {
       justifyContent: "center",
-
       marginBottom: 20,
     },
     actionButtonsContainer: {
@@ -244,7 +243,7 @@ const AccoladeSection = ({ styles }) => {
       <Text style={[styles.subSectionTitleText, { paddingHorizontal: 25 }]}>
         Accolades
       </Text>
-      <View style={{ flex: 1, alignItems: "center" }}>
+      <View style={{ flex: 1 }}>
         <AccoladeGroup />
       </View>
     </View>
