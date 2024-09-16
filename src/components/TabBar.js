@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-  Image,
-  useColorScheme,
-} from "react-native";
+import { StyleSheet, Pressable, Image, useColorScheme } from "react-native";
 import React, { useCallback } from "react";
 import { BlurView } from "expo-blur";
 import { useColors } from "../hooks/useColors";

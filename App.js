@@ -1,12 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Text } from "react-native";
-import Onboarding from "./src/screens/Onboarding";
-import HomeScreen from "./src/screens/HomeScreen";
+import { StyleSheet, View } from "react-native";
 import ThemeProvider from "./src/context/ThemeProvider";
 import "react-native-reanimated";
+
+// Custom Screens
+import Onboarding from "./src/screens/Onboarding";
+import HomeScreen from "./src/screens/HomeScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import InfluencerReportScreen from "./src/screens/InfluencerReportScreen";
-import CircularButton from "./src/components/CircularButton";
 
 const App = () => {
   return (

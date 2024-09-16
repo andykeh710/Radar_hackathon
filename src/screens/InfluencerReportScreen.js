@@ -78,7 +78,6 @@ const useStyle = () => {
     },
     recentPostSectionContainer: {
       justifyContent: "center",
-      // marginHorizontal: 25,
       marginBottom: 20,
     },
     reportCardContainer: {
