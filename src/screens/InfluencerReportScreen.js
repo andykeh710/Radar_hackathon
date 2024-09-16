@@ -119,6 +119,7 @@ const HeaderSection = ({ styles, searchString, onChangeText }) => {
         placeholder="Find Influencers"
         icon="search1"
         textFieldStyle={{ paddingVertical: 15 }}
+        textContainerStyle={{ width: "80%" }}
       />
       <Avatar
         image={{ uri: "https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg" }}

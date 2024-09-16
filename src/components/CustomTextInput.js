@@ -10,13 +10,14 @@ const CustomTextInput = ({
   secureTextEntry,
   autoComplete,
   children,
+  textContainerStyle,
   textFieldStyle,
 }) => {
   const colorScheme = useColors();
   const styles = useStyle(colorScheme);
 
   return (
-    <View style={styles.textInputContainer}>
+    <View style={[styles.textInputContainer, textContainerStyle]}>
       {children}
       <TextInput
         style={[styles.textInput, textFieldStyle]}
@@ -44,13 +45,11 @@ const useStyle = (colorScheme) => {
       paddingHorizontal: 15,
       opacity: 0.6,
       marginVertical: 10,
-      width: "80%",
       backgroundColor: colorScheme.textInput.primary,
     },
     textInput: {
       borderRadius: 50,
       flex: 1,
-      padding: 10,
       color: colorScheme.text.primary,
       backgroundColor: colorScheme.textInput.primary,
     },
