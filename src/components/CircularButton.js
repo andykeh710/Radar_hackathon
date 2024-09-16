@@ -7,6 +7,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Octicons from "@expo/vector-icons/Octicons";
 
 const CircularButton = ({
   iconFamily,
@@ -56,6 +57,14 @@ const getIconFamily = (iconFamily, icon, iconSize, colorScheme) => {
     case "ionicons":
       return (
         <Ionicons
+          name={icon}
+          size={iconSize}
+          color={colorScheme.button.activeIcon}
+        />
+      );
+    case "octicons":
+      return (
+        <Octicons
           name={icon}
           size={iconSize}
           color={colorScheme.button.activeIcon}

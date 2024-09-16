@@ -110,6 +110,7 @@ const useStyle = () => {
     userSectionContainer: {
       flexDirection: "row",
       justifyContent: "space-between",
+      paddingHorizontal: 15,
     },
     userContainer: {
       flexDirection: "row",
@@ -164,7 +165,12 @@ const HeaderSection = ({ styles }) => {
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <CircularButton icon="bell" iconSize="20" style={styles.button} />
+        <CircularButton
+          iconFamily="feather"
+          icon="bell"
+          iconSize="20"
+          style={styles.button}
+        />
       </View>
     </View>
   );

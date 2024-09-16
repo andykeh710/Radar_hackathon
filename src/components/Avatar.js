@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   userAvatarContainer: {
     borderRadius: 50,
-    resizeMode: "contain",
+    resizeMode: "cover",
     borderColor: "white",
   },
 });

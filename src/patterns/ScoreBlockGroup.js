@@ -17,6 +17,6 @@ export default ScoreBlockGroup;
 const styles = StyleSheet.create({
   scoreBlockContainer: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
   },
 });

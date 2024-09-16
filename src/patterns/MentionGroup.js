@@ -25,8 +25,9 @@ const useStyle = () => {
       borderRadius: stylings.borderRadiusSmall,
       backgroundColor: colorScheme.background.primary,
       padding: 25,
-      // alignItems: "center",
+      width: "100%",
       justifyContent: "space-between",
+      marginBottom: 2,
     },
     mentionText: {
       color: colorScheme.text.primary,

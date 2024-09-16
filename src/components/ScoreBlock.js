@@ -16,7 +16,7 @@ const ScoreBlock = ({ score, description }) => {
 export default ScoreBlock;
 
 const useStyle = () => {
-  const SIZE = 125;
+  const SIZE = 122;
   const colorScheme = useColors();
   const styles = StyleSheet.create({
     container: {

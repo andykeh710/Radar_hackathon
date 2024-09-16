@@ -17,7 +17,7 @@ export const tabBarItems = [
   },
   {
     id: randomUUID(),
-    screen: "ScoreBreakdownScreen",
+    screen: "InfluencerReportScreen",
     icons: {
       light: {
         active: require("../../assets/feed_active_light.png"),

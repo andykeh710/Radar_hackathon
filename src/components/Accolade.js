@@ -16,7 +16,7 @@ const Accolade = ({ icon, title, description }) => {
 export default Accolade;
 
 const useStyle = () => {
-  const SIZE = 120;
+  const SIZE = 122;
   const colorScheme = useColors();
   const styles = StyleSheet.create({
     container: {
@@ -27,7 +27,7 @@ const useStyle = () => {
       alignItems: "center",
       width: SIZE,
       height: SIZE,
-      marginRight: 3,
+      marginRight: 2,
     },
     score: {
       color: colorScheme.text.primary,

@@ -29,9 +29,10 @@ const ProfileScreen = () => {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.topCard}>
-        <SafeAreaView style={styles.contentContainer}>
+        <View style={styles.contentContainer}>
           <View style={styles.settingButton}>
             <CircularButton
+              iconFamily="octicons"
               icon="gear"
               iconSize="20"
               onPress={handleSettingPress}
@@ -39,7 +40,7 @@ const ProfileScreen = () => {
           </View>
           <View style={styles.avatar}>
             <Avatar
-              image={{ uri: "https://pbs.twimg.com/media/FmZf1SWagAAiGNg.jpg" }}
+              image={{ uri: "https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg" }}
               size={100}
             />
             <Text style={styles.profileScoreText}>68</Text>
@@ -49,7 +50,7 @@ const ProfileScreen = () => {
           <ScoreBlockGroup />
           <MentionGroup />
           <AccoladeGroup />
-        </SafeAreaView>
+        </View>
       </View>
       <SettingScreen ref={settingRef} />
     </ScrollView>
@@ -72,6 +73,7 @@ const useStyle = () => {
       backgroundColor: colorScheme.background.primary,
     },
     contentContainer: {
+      paddingTop: 45,
       justifyContent: "center",
       alignItems: "center",
     },
@@ -87,8 +89,8 @@ const useStyle = () => {
     },
     settingButton: {
       position: "absolute",
-      top: 35,
-      right: -10,
+      top: 30,
+      right: -5,
     },
     topCard: {
       flex: 0.3,
