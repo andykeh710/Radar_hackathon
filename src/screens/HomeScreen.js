@@ -136,7 +136,7 @@ const useStyle = () => {
       borderBottomLeftRadius: stylings.borderRadiusMedium,
       borderBottomRightRadius: stylings.borderRadiusMedium,
       position: "absolute",
-      height: height * 0.16,
+      height: height * 0.15,
       width: width,
       top: 0,
       zIndex: 1,
