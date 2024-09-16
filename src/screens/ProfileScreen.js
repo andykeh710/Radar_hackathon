@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  ScrollView,
-  View,
-  useWindowDimensions,
-} from "react-native";
+import { StyleSheet, Text, ScrollView, View } from "react-native";
 import React, { useRef } from "react";
 import { useColors } from "../hooks/useColors";
 import { stylings } from "../misc/styles";
@@ -61,7 +54,6 @@ export default ProfileScreen;
 
 const useStyle = () => {
   const colorScheme = useColors();
-  const { width } = useWindowDimensions();
   const styles = StyleSheet.create({
     avatar: {
       flexDirection: "row",
