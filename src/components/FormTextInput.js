@@ -11,6 +11,7 @@ const FormTextInput = ({
   keyboardType,
   secureTextEntry = false,
   icon,
+  textContainerStyle,
   textFieldStyle,
 }) => {
   const colorScheme = useColors();
@@ -22,6 +23,7 @@ const FormTextInput = ({
       keyboardType={keyboardType}
       secureTextEntry={secureTextEntry}
       autoComplete={false}
+      textContainerStyle={textContainerStyle}
       textFieldStyle={textFieldStyle}
     >
       <AntDesign name={icon} size={24} color={colorScheme.text.primary} />

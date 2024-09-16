@@ -90,6 +90,7 @@ const SignInScreen = (_, ref) => {
             keyboardType="email-address"
             clearButtonMode="while-editing"
             icon="user"
+            textFieldStyle={{ padding: 20 }}
             colorScheme={colorScheme}
           />
           <FormTextInput
@@ -99,6 +100,8 @@ const SignInScreen = (_, ref) => {
             keyboardType="default"
             clearButtonMode="while-editing"
             secureTextEntry={true}
+            textFieldStyle={{ padding: 20 }}
+            textContainerStyle={{ width: "100%" }}
             icon="key"
             colorScheme={colorScheme}
           />
@@ -123,18 +126,24 @@ const SignInScreen = (_, ref) => {
           </View>
           <View style={styles.socialBtnContainer}>
             <CircularButton
+              iconFamily="fontAwesome6"
               icon="apple"
               colorScheme={colorScheme}
+              style={{ width: 60, height: 60 }}
               onPress={handleAppleSignIn}
             />
             <CircularButton
+              iconFamily="fontAwesome6"
               icon="google"
               colorScheme={colorScheme}
+              style={{ width: 60, height: 60 }}
               onPress={handleGoogleSignIn}
             />
             <CircularButton
-              icon="facebook"
+              iconFamily="fontAwesome6"
+              icon="facebook-f"
               colorScheme={colorScheme}
+              style={{ width: 60, height: 60 }}
               onPress={handleFacebookSignIn}
             />
           </View>
