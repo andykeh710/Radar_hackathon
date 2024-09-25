@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=twitter_sentiment_price
+POSTGRES_USER=tLXdZslkunPNwFhOKqKjBMxinTEszyVS
+POSTGRES_PASSWORD=DUW8kTJboWLwyDb8Xre0RZJgoWd3zFAMyL374RhxnkRMsX9QEskyRyyjs3pDuWhW
