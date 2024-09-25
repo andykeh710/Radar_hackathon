@@ -1,0 +1,28 @@
+{
+  "include": [
+    "./"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__"
+  ],
+  "ignore": [],
+  "defineConstant": {
+    "DEBUG": true
+  },
+  "stubPath": "",
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+  "pythonVersion": "3.11",
+  "pythonPlatform": "Linux",
+  "venvPath": "./",
+  "venv": "venv",
+  "executionEnvironments": [
+    {
+      "root": "./",
+      "pythonVersion": "3.11",
+      "pythonPlatform": "Linux",
+      "extraPaths": []
+    }
+  ]
+}
