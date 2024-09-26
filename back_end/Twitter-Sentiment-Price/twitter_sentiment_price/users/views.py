@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .tasks import analyze_tweet_sentiment
+from ..tweet_analyzer.tasks import analyze_tweet_sentiment
 
 @api_view(['POST'])
 def analyze_sentiment(request):
