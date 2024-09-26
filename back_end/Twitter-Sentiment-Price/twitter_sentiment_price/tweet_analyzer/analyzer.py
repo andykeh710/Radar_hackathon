@@ -3,7 +3,7 @@ from collections import defaultdict
 
 import pandas as pd
 import twscrape
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 from langchain.output_parsers import PydanticOutputParser
 from langchain.prompts import PromptTemplate
 from langchain.schema.runnable import RunnableParallel

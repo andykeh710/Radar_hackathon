@@ -4,6 +4,15 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .tasks import analyze_tweet_sentiment
+
+@api_view(['POST'])
+def analyze_sentiment(request):
+    tweet = request.data.get('tweet')
+    result = analyze_tweet_sentiment.delay(tweet)
+    return Response({'task_id': result.id})
 
 User = get_user_model()
 

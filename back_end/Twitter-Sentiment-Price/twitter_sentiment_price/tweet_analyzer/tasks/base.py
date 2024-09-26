@@ -2,6 +2,7 @@ import contextlib
 import json
 import re
 from datetime import datetime, timedelta
+from celery import shared_task
 
 import twscrape
 from asgiref.sync import async_to_sync
