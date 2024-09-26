@@ -20,7 +20,8 @@ $ docker-compose -f local.yml up django celeryworker celerybeat flower
 ```bash
 $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
 $ docker-compose -f local.yml run --rm django python manage.py migrate
-$ docker-compose -f local.yml run --rm django python manage.py makemigration
+$ docker-compose -f local.yml run --rm django python manage.py makemigrations
+
 ```
 
 ### Setting Up Your Users
