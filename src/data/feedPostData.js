@@ -16,7 +16,7 @@ export const FEED_POST_DATA = [
             reach: "100",
           },
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut",
+            "Bitcoin enthusiast sharing insights on market trends and blockchain technology. Passionate about cryptocurrency's potential to revolutionize finance and empower individuals worldwide.",
         },
       },
     ],
@@ -36,7 +36,7 @@ export const FEED_POST_DATA = [
             reach: "67",
           },
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut",
+            "Shy crypto enthusiast exploring the world of digital currencies. Fascinated by blockchain technology and its potential, but still learning the ropes.",
         },
       },
     ],
@@ -56,7 +56,7 @@ export const FEED_POST_DATA = [
             reach: "32",
           },
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut",
+            "Keen market watcher with a track record of accurate, everyday financial predictions that consistently outperform expectations.",
         },
       },
     ],
